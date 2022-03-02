@@ -1,6 +1,6 @@
 import Header from './components/Header/Header'
 import Intro from './components/Intro/Intro'
-import MealsListing from './components/Meals/MealsListing'
+import MealsListing from './components/Meals/MealsListing/MealsListing'
 
 const App = () => {
   return (
