@@ -1,8 +1,10 @@
-function App() {
+import Header from "./components/Header/Header";
+
+const App = () => {
   return (
-    <div>
-      <h2>Food ordering app</h2>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
