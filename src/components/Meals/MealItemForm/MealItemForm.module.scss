@@ -1,0 +1,22 @@
+@use "../../../styles/config";
+
+.form {
+  text-align: right;
+  
+  button {
+    font: inherit;
+    cursor: pointer;
+    background-color: config.$red;
+    border: 1px solid config.$red;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+
+    &:hover,
+    &:active {
+      background-color: config.$drkRed;
+      border-color: config.$drkRed;
+    }
+  }
+}
