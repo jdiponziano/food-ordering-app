@@ -1,13 +1,17 @@
-import Header from "./components/Header/Header";
-import Intro from './components/Intro/Intro';
+import Header from './components/Header/Header'
+import Intro from './components/Intro/Intro'
+import MealsListing from './components/Meals/MealsListing'
 
 const App = () => {
   return (
     <>
       <Header />
-      <Intro />
+      <main>
+        <Intro />
+        <MealsListing />
+      </main>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
