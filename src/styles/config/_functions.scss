@@ -1,0 +1,58 @@
+/**********************
+  Functions
+***********************/
+@use "sass:math";
+
+/*
+  Function to calculate REM from pixels.
+*/
+@function strip-units($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+/*
+  Calculate REM from pixels.
+*/
+
+@function rem($pxval, $base: 16) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+
+  @return math.div($pxval, $base) * 1rem;
+}
+
+/*
+  Calculate EM from pixels.
+*/
+
+@function em($pxval, $base: 16) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+
+  @return math.div($pxval, $base) * 1em;
+}
+
+/*
+  Calculates a unitless line-height.
+*/
+
+@function lh($line-height, $font-size: 16) {
+  @if not unitless($line-height) {
+    $line-height: strip-units($line-height);
+  }
+
+  @if not unitless($font-size) {
+    $font-size: strip-units($font-size);
+  }
+
+  @return math.div($line-height, $font-size);
+}
