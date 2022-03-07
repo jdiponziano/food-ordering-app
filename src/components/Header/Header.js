@@ -1,4 +1,4 @@
-import CartBtn from '../CartBtn/CartBtn'
+import CartBtn from '../Cart/CartBtn/CartBtn.js'
 
 import mealsImg from '../../images/meals.jpeg'
 import styles from './Header.module.scss'
