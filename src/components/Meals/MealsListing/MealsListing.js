@@ -1,10 +1,11 @@
 import MealItem from '../MealItem/MealItem'
-
-import MEALS from '../meals'
+import { useCartContext } from '../../../store/cart-context'
 import styles from './MealsListing.module.scss'
 
 const MealsListing = () => {
-  const mealList = MEALS.map(meal => {
+  const { items } = useCartContext()
+  
+  const mealList = items.map(meal => {
     return (
       <MealItem
         key={meal.id}
