@@ -1,44 +1,48 @@
+import { useReducer } from 'react'
 import { CartContext } from './cart-context'
 
-export const CartProvider = ({ children }) => {
-  const addCartItemHandler = item => {}
+const defaultCartState = {
+  items: [],
+  totalAmount: 0
+}
 
-  const removeCartItemHandler = id => {}
+const cartReducer = (state, action) => {
+  if (action.type === 'ADD_ITEM') {
+    const { item } = action
+    const updatedItems = state.items.concat(item)
+    const updatedTotalAmount = state.totalAmout + item.price * item.amount
+
+    return {
+      items: updatedItems,
+      totalAmout: updatedTotalAmount
+    }
+  }
+
+  if (action.type === 'REMOVE_ITEM') {
+  }
+  
+  return defaultCartState
+}
+
+export const CartProvider = ({ children }) => {
+  const [cartState, dispatchCartAction] = useReducer(
+    cartReducer,
+    defaultCartState
+  )
+
+  const addItemToCartHandler = item => {
+    dispatchCartAction({ type: 'ADD_ITEM', item: item })
+  }
+
+  const removeItemFromCartHandler = id => {
+    dispatchCartAction({ type: 'REMOVE_ITEM', id: id })
+  }
 
   const initialValues = {
-    items: [
-      {
-        id: 'm1',
-        name: 'Sushi',
-        description: 'Finest fish and veggies',
-        price: 22.99,
-        amount: 3,
-      },
-      {
-        id: 'm2',
-        name: 'Schnitzel',
-        description: 'A german specialty!',
-        price: 16.5,
-        amount: 1,
-      },
-      {
-        id: 'm3',
-        name: 'Barbecue Burger',
-        description: 'American, raw, meaty',
-        price: 12.99,
-        amount: 2,
-      },
-      {
-        id: 'm4',
-        name: 'Green Bowl',
-        description: 'Healthy...and green...',
-        price: 18.99,
-        amount: 1,
-      }
-    ],
-    totalAmout: 0,
-    additem: addCartItemHandler,
-    removeItem: removeCartItemHandler
+    items: cartState.items,
+    totalAmount: cartState.totalAmount,
+    addItem: addItemToCartHandler,
+    removeItem: removeItemFromCartHandler
   }
 
   return (

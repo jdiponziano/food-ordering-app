@@ -18,7 +18,7 @@ const CartModal = ({ onClose }) => {
       <div>{cartItems}</div>
       <div className={styles.total}>
         <span>Total:</span>
-        <span>{totalAmount}</span>
+        <span>${totalAmount}</span>
       </div>
       <div className={styles.actions}>
         <button className={styles['button--alt']} onClick={onClose}>
